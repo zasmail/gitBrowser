@@ -6,6 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('endpoint');
+  this.route('org-repo');
 });
 
 export default Router;
