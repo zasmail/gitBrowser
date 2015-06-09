@@ -1,0 +1,17 @@
+
+<div>
+  {{view "select"
+          content=endpoints
+          optionLabelPath="content.englishName"
+          optionValuePath="content.url"
+          selection=selectedEndpoint
+          prompt="Endpoint"
+  }}
+  {{selectedEndpoint.url}}
+  <ul>
+    {{#each endpoints as |endpoint|}}
+      <li>{{endpoint.englishName}}: {{endpoint.url}}</li>
+    {{/each}}
+  </ul>
+</div>
+
