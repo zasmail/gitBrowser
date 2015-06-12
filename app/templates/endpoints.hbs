@@ -1,5 +1,5 @@
-
 <div>
+  {{rate}}
   {{view "select"
           content=endpoints
           optionLabelPath="content.englishName"
@@ -10,7 +10,7 @@
   {{selectedEndpoint.url}}
   <ul>
     {{#each endpoints as |endpoint|}}
-      <li>{{endpoint.englishName}}: {{endpoint.uri}}</li>
+      {{endpoint-row content=endpoint }}
     {{/each}}
   </ul>
 </div>
