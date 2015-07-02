@@ -11,11 +11,12 @@ var EndpointModel = Ember.Object.extend({
     var curSegment = "";
     for (var i = 0; i < url.length; i++){
       char = url.charAt(i);
-      if (char == "{"){
-        if (curSegment.length > 0)
+      if (char === "{"){
+        if (curSegment.length > 0) {
           endpointSegments.push(curSegment);
+        }
         curSegment = char;
-      }else if(char == "}"){
+      }else if(char === "}"){
         curSegment += char;
         endpointSegments.push(curSegment);
         curSegment = "";
