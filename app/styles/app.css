@@ -1,6 +1,39 @@
+@import "bootstrap.css";
+@import "bootstrap.css.map";
+@import "bootstrap.min.css";
+@import "bootstrap-theme.css";
+@import "bootstrap-theme.css.map";
+@import "bootstrap-theme.min.css";
+@import "fonts/glyphicons-halflings-regular.eot";
+@import "fonts/glyphicons-halflings-regular.svg";
+@import "fonts/glyphicons-halflings-regular.ttf";
+@import "fonts/glyphicons-halflings-regular.woff";
+@import "fonts/glyphicons-halflings-regular.woff2";
+
 .static{
   color: black;
 }
 .dynamic{
   color:blue;
+}
+
+.navbar-right {
+  margin-right: 50px;
+}
+
+.dynamic-segment{
+  padding: 0px 0px 0px;
+  border: 0px;
+  /*override a button background color*/
+  background-color: transparent;
+  color: #4f9fcf;
+}
+
+.endpoint-row-container {
+  padding-left: 15px;
+}
+
+.endpoint-name{
+  display: inline;
+  padding-right: 15px;
 }

@@ -1,31 +1,37 @@
 import Ember from 'ember';
+import UrlSegment from 'git-sandbox/models/url-segment';
 
 var EndpointModel = Ember.Object.extend({
   url: undefined,
   name: undefined,
+  segments: undefined,
 
   urlSegments: Ember.computed('url', function(){
     var url = this.get('url');
     var endpointSegments = [];
     var char = "";
     var curSegment = "";
+    var segment = {};
     for (var i = 0; i < url.length; i++){
       char = url.charAt(i);
       if (char === "{"){
         if (curSegment.length > 0) {
-          endpointSegments.push(curSegment);
+          segment = UrlSegment.create( {segment: curSegment} );
+          endpointSegments.push(segment);
         }
         curSegment = char;
       }else if(char === "}"){
         curSegment += char;
-        endpointSegments.push(curSegment);
+        segment = UrlSegment.create( {segment: curSegment} );
+        endpointSegments.push(segment);
         curSegment = "";
       }else{
         curSegment += char;
       }
     }
     if (curSegment.length > 0) {
-      endpointSegments.push(curSegment);
+      segment = UrlSegment.create( {segment: curSegment} );
+      endpointSegments.push(segment);
     }
     return endpointSegments;
   }),

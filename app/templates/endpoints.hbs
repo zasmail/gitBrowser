@@ -1,17 +1,15 @@
-<div>
-  {{rate}}
-  {{view "select"
-          content=endpoints
-          optionLabelPath="content.englishName"
-          optionValuePath="content.url"
-          selection=selectedEndpoint
-          prompt="Endpoint"
-  }}
-  {{selectedEndpoint.url}}
-  <ul>
-    {{#each endpoints as |endpoint|}}
-      {{endpoint-row content=endpoint }}
-    {{/each}}
+<nav class="navbar navbar-inverse">
+  <a class="navbar-brand" href="endpoints">Github Browser</a>
+  <ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="endpoints"> Remaining Requests:
+      <span class="label label-danger">{{rate}}</span>
+    </a></li>
   </ul>
+</nav>
+
+<div>
+  {{#each endpoints as |endpoint| }}
+    {{endpoint-row onGetUrl=getUrl content=endpoint}}
+  {{/each}}
 </div>
 

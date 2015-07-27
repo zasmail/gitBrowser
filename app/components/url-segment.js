@@ -1,18 +1,13 @@
 import Ember from 'ember';
+import urlSegment from 'git-sandbox/models/url-segment';
 
-var urlSegment = Ember.Component.extend({
+var urlSegmentComponent = Ember.Component.extend({
   tagName: 'span',
   classNameBindings: ['isDynamic:dynamic:static'],
-  content: undefined,
-  other: "other",
+  segment: Ember.computed.alias('content.segment'),
   isInputting: false,
-  isDynamic: Ember.computed('content', function(){
-    if(this.get('content').charAt(0)==="{") {
-      return true;
-    }else {
-      return false;
-    }
-  }),
+  isDynamic: Ember.computed.alias('content.isDynamic'),
+  onStopInputting: undefined,
 
   actions: {
     startInputting: function (){
@@ -21,8 +16,9 @@ var urlSegment = Ember.Component.extend({
 
     stopInputting: function (){
       this.set('isInputting', false);
+      this.sendAction('onStopInputting', this);
     }
   }
 });
 
-export default urlSegment;
+export default urlSegmentComponent;
