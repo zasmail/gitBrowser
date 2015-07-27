@@ -10,7 +10,7 @@ var urlSegment = Ember.Object.extend({
       return false;
     }
   }),
-  segmentClone: Ember.computed(function(key, value){
+  segmentName: Ember.computed(function(key, value){
     return value;
   })
 });

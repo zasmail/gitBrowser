@@ -6,12 +6,29 @@ var EndpointsRoute = Ember.Route.extend({
   endpoints: undefined,
   getUrl: 'getUrl',
   model: function() {
+    return this._handleAllEndpoints();
+  },
+  actions: {
+    getUrl: function (url){
+      this._getPayload(url).then(function(data){
+        console.log(data);
+      }, function(data){
+        console.log(data);
+      })
+    }
+  },
+
+  _getPayload: function (url) {
     return Ember.$.ajax({
       type: 'GET',
       url: 'https://api.github.com/',
       dataType: 'jsonp',
       data: { access_token: Settings.OAUTH.GIT }
-    }).then(function(data){
+    })
+  },
+
+  _handleAllEndpoints: function() {
+    return this._getPayload("https://api.github.com/").then(function(data){
       var rate =  data.meta["X-RateLimit-Remaining"];
 
       var endpoints=  Ember.keys(data.data).map ( function (element){
@@ -22,17 +39,8 @@ var EndpointsRoute = Ember.Route.extend({
       });
       return {rate: rate, endpoints: endpoints};
     });
-  },
-  actions: {
-    stopInputting: function (){
-      debugger;
-      console.log("here");
-    },
-    getUrl: function (){
-      debugger;
-      console.log("there");
-    }
   }
+
 
 
 });

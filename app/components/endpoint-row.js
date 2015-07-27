@@ -12,6 +12,7 @@ var EndpointRow = Ember.Component.extend({
   $content:     undefined,
   $container:   undefined,
   $el:          undefined,
+  fire:         'getUrl',
 
   name:        Ember.computed.alias('content.englishName'),
   url:         Ember.computed.alias('content.url'),
@@ -42,22 +43,9 @@ var EndpointRow = Ember.Component.extend({
   }
   ).on ('willDestroyElement'),
 
-
-
-actions: {
+  actions: {
     onGetUrl: function() {
-      //needs to be moved to the route
-      Ember.$.ajax({
-        type: 'GET',
-        url: this.get('urlString'),
-        dataType: 'jsonp',
-        data: { access_token: Settings.OAUTH.GIT }
-      }).then(function(data){
-        console.log(data);
-      }, function(data){
-        console.log(data);
-      })
-      //this.sendAction('getUrl model', this.get('urlString'));
+      this.sendAction('fire', 'urlString');
     }
   },
 
