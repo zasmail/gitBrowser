@@ -21,7 +21,7 @@ var EndpointsRoute = Ember.Route.extend({
   _getPayload: function (url) {
     return Ember.$.ajax({
       type: 'GET',
-      url: 'https://api.github.com/',
+      url: url,
       dataType: 'jsonp',
       data: { access_token: Settings.OAUTH.GIT }
     })

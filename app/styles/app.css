@@ -31,9 +31,22 @@
 
 .endpoint-row-container {
   padding-left: 15px;
+  padding: 5px;
 }
 
+.endpoint-row-container:hover{
+  background-color: #f5f5f5;
+}
+
+.endpoint-row-container:hover .show-on-hover {
+  display: inline;
+}
 .endpoint-name{
   display: inline;
   padding-right: 15px;
 }
+
+.show-on-hover{
+  display: none;
+}
+

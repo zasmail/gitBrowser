@@ -22,7 +22,7 @@ var EndpointModel = Ember.Object.extend({
         curSegment = char;
       }else if(char === "}"){
         curSegment += char;
-        segment = UrlSegment.create( {segment: curSegment} );
+        segment = UrlSegment.create( {segment: curSegment, segmentName: curSegment} );
         endpointSegments.push(segment);
         curSegment = "";
       }else{
