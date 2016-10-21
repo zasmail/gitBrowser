@@ -1,0 +1,13 @@
+{{#if isDynamic}}
+  <button class="dynamic-segment" {{action 'startInputting' on="click"}}>
+    {{#if isInputting}}
+      {{input type="text" class="form-control" value=segment}}
+      <button class="btn btn-default btn-xs" {{action 'stopInputting' bubbles=false}}>okay</button>
+      <button class="btn btn-default btn-xs" {{action 'cancel'}}>cancel</button>
+    {{else}}
+      {{~segment~}}
+    {{/if}}
+  </button>
+{{else}}
+  {{~segment~}}
+{{/if}}

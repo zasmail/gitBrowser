@@ -1,0 +1,10 @@
+<h5 class="endpoint-name"><small>{{name}}</small></h5>
+
+<button class="btn btn-default btn-xs show-on-hover" {{action 'getUrl' on="click"}}>Go</button>
+<button class="btn btn-default btn-xs show-on-hover" {{action 'clear' on="click"}}>Clear</button>
+
+<h4>
+  {{#each urlSegments as |segment|~}}
+    {{url-segment content=segment}}
+  {{~/each}}
+</h4>

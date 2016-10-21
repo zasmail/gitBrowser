@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    OAUTH: {
+      GIT: '551d0c04a362d8c84c33ff6b6177ff13fec80607'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
